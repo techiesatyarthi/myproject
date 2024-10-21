@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Techie Satyarthi</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/linuxguist/files@main/w3colors.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <style>
+    @charset "UTF-8";
+
+    * {
+      font-family: "Source Sans Pro", sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #B7B7B7;
+    }
+
+    h1 {
+      color: gray;
+      text-align: center;
+    }
+
+    h2 {
+      color: #ededed;
+      text-align: center;
+    }
+
+    span {
+      color: gray;
+      text-align: center;
+      display: block;
+      margin-top: 20px;
+    }
+
+    .tooltip {
+      position: absolute;
+      bottom: 110px;
+      left: 370px;
+      font-weight: 600;
+    }
+
+    img {
+      position: absolute;
+      bottom: 30px;
+      left: 200px;
+      transform: rotate(120deg);
+      width: 150px;
+      opacity: 0.5;
+    }
+
+    .head {
+      background: #000000;
+      font-family: "Source Sans Pro", sans-serif;
+      font-weight: 200;
+      color: #fff0f0;
+      font-size: 16px;
+      font-weight: bold;
+      height: 30px;
+      position: relative;
+      top: 200px;
+      width: 200px;
+      padding: 10px 0px 0px 10px;
+    }
+
+    .head #expandcolors {
+      position: absolute;
+      margin-top: -2px;
+      right: 10px;
+      background: none;
+      border: none;
+      color: white;
+      opacity: 0.5;
+      transition: 0.5s ease-in-out;
+      cursor: pointer;
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      transform: rotate(90deg);
+      transition: 0.5s ease-in-out;
+    }
+
+    .head #expandcolors:focus {
+      outline: 0;
+    }
+
+    .transform {
+      -webkit-transform: rotate(45deg) !important;
+      -moz-transform: rotate(45deg) !important;
+      -ms-transform: rotate(45deg) !important;
+      -o-transform: rotate(45deg) !important;
+      transform: rotate(45deg) !important;
+      transition: 0.5s ease-in-out;
+    }
+
+    .wrap {
+      background: rgb(3, 0, 0);
+      -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+      color: #fff;
+      position: fixed;
+      bottom: 0;
+      left: 20px;
+      border-radius: 20px;
+
+      padding: 10px;
+      content: "";
+      background: linear-gradient(45deg,
+          #ff0000,
+          #ff7300,
+          #fffb00,
+          #48ff00,
+          #00ffd5,
+          #002bff,
+          #7a00ff,
+          #ff00c8,
+          #ff0000);
+      z-index: -1;
+      animation: glowing-button-85 20s linear infinite;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .colors {
+
+      list-style-type: none;
+      margin: 0;
+      max-height: 1000px;
+      overflow: hidden;
+      padding: 5px;
+      transition: max-height 0.5s ease-in;
+    }
+
+    .colors li {
+      background: none;
+      cursor: auto;
+      display: inline-block;
+      height: 31px;
+      margin: 0 -4px 4px 0;
+      padding: 10px 0;
+      text-align: center;
+      width: 25%;
+    }
+
+    .colors li:hover .color {
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.45), 0 0 0 2px rgba(205, 205, 205, 0.9);
+      transform: scale(1.05);
+    }
+
+    .colors li.selected .color {
+      opacity: 0.9;
+      position: relative;
+      transform: scale(1.25);
+    }
+
+    .colors li.selected .color::after {
+      color: azure;
+      content: "✓";
+      height: 100%;
+      left: 0;
+      line-height: 34px;
+      position: absolute;
+      text-indent: 0;
+      width: 100%;
+    }
+
+    .colors .color {
+      border-radius: 100%;
+      cursor: pointer;
+      height: 33px;
+      margin: 0 auto;
+      text-indent: -9999px;
+      -webkit-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+      width: 33px;
+    }
+
+
+
+    /* CSS */
+    .techie_satyarthi {
+      max-width: 800px;
+      width:100%;
+      margin: 0 auto;
+      --b: 3px;
+      /* border thickness */
+      --s: .45em;
+      /* size of the corner */
+      --color: #373B44;
+
+      padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+      color: var(--color);
+      --_p: var(--s);
+      background:
+        conic-gradient(from 90deg at var(--b) var(--b), #0000 90deg, var(--color) 0) var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+      transition: .3s linear, color 0s, background-color 0s;
+      outline: var(--b) solid #0000;
+      outline-offset: .6em;
+      border: 0;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      text-decoration:none;
+    }
+
+    .techie_satyarthi:hover,
+    .techie_satyarthi:focus-visible {
+      --_p: 0px;
+      outline-color: #000000;
+      outline-offset: .05em;
+    }
+
+    .techie_satyarthi:active {
+      background: #ffff;
+      color: #000000;
+    }
+  </style>
+  <br>
+
+
+
+  <div class="pt-5 text-center ">
+  <a href="https://wa.me/8800286604"><p style="font-size:50px;" href="https://wa.me/8800286604" class="techie_satyarthi text-decoration-none">TECHIE <br>
+      SATYARTHI</p></a>  
+      <a href="mailto:techiesatyarthi@gmail.com"><p style="font-size:18px;"  class="techie_satyarthi text-decoration-none mt-2">techiesatyarthi@gmail.com</p></a>
+
+  </div>
+
+  <div class="wrap">
+    <!-- <div class="head">
+    <button id="expandcolors">&#000;</button>
+  </div> -->
+    <ul name="colors" data-for="colors[]" class="colors">
+      <li>
+        <div class="color w3-black" title="black"></div>
+      </li>
+      <li>
+        <div class="color w3-amber" title="amber"></div>
+      </li>
+      <li>
+        <div class="color w3-aqua" title="aqua"></div>
+      </li>
+      <li>
+        <div class="color w3-blue" title="blue"></div>
+      </li>
+      <li class="selected">
+        <div class="color w3-indigo" title="indigo"></div>
+      </li>
+      <li>
+        <div class="color w3-khaki" title="khaki"></div>
+      </li>
+      <li>
+        <div class="color w3-lime" title="lime"></div>
+      </li>
+      <li>
+        <div class="color w3-light-blue" title="light-blue"></div>
+      </li>
+      <li>
+        <div class="color w3-brown" title="brown"></div>
+      </li>
+      <li>
+        <div class="color w3-cyan" title="cyan"></div>
+      </li>
+      <li>
+        <div class="color w3-blue-grey" title="blue-grey"></div>
+      </li>
+      <li>
+        <div class="color w3-white" title="white"></div>
+      </li>
+      <!-- <li><div class="color w3-green" title="green"></div></li>
+      <li><div class="color w3-light-green" title="light-green"></div></li>
+      <li><div class="color w3-orange" title="orange"></div></li>
+      <li><div class="color w3-deep-orange" title="deep-orange"></div></li>
+      <li><div class="color w3-pink" title="pink"></div></li>
+      <li><div class="color w3-purple" title="purple"></div></li>
+      <li><div class="color w3-deep-purple" title="deep-purple"></div></li>
+      <li><div class="color w3-red" title="red"></div></li>
+      <li><div class="color w3-sand" title="sand"></div></li>
+      <li><div class="color w3-teal" title="teal"></div></li>
+      <li><div class="color w3-yellow" title="yellow"></div></li>
+      <li><div class="color w3-white" title="white"></div></li>
+      <li><div class="color w3-black" title="black"></div></li>
+      <li><div class="color w3-grey" title="grey"></div></li>
+      <li><div class="color w3-light-grey" title="light-grey"></div></li>
+      <li><div class="color w3-dark-grey" title="dark-grey"></div></li>
+      <li><div class="color w3-pale-red" title="pale-red"></div></li>
+      <li><div class="color w3-pale-green" title="pale-green"></div></li>
+      <li><div class="color w3-pale-yellow" title="pale-yellow"></div></li>
+      <li><div class="color w3-pale-blue" title="pale-blue"></div></li> -->
+
+
+    </ul>
+  </div>
+
+
+
+ 
+
+
+
+
+
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+ <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+  <script>
+    $(document).ready(function () {
+      isSavedColor()
+
+      $('.colors').show();  // We can also use hide here
+      $('#expandcolors').click(function () {
+        $('.colors').slideToggle();
+        $(this).toggleClass('transform');
+        $(".tooltip, img").fadeOut();
+
+      });
+    })
+
+    function alterColor(rgb, type, percent) {
+      rgb = rgb.replace('rgb(', '').replace(')', '').split(',');
+
+      var red = $.trim(rgb[0]);
+      var green = $.trim(rgb[1]);
+      var blue = $.trim(rgb[2]);
+
+      //If rgb is black set it to gray
+      if (red == 0 && green == 0 && blue == 0) {
+        red = 100;
+        green = 100;
+        blue = 100;
+      }
+
+      if (type === "darken") {
+        red = parseInt(red * (100 - percent) / 100, 10);
+        green = parseInt(green * (100 - percent) / 100, 10);
+        blue = parseInt(blue * (100 - percent) / 100, 10);
+      } else {
+        red = parseInt(red * (100 + percent) / 100, 10);
+        green = parseInt(green * (100 + percent) / 100, 10);
+        blue = parseInt(blue * (100 + percent) / 100, 10);
+      }
+
+      rgb = 'rgb(' + red + ', ' + green + ', ' + blue + ')';
+
+      return rgb;
+    }
+
+    function isSavedColor() {
+      if (localStorage.mySavedColor != null) {
+        $('.darker').css('color', localStorage.darkerColor);
+        $('.lighter').css('color', localStorage.lighterColor);
+        $('body').css('background', localStorage.color);
+        $('body').css('color', localStorage.fgcolor);
+
+        $("ul.colors li:nth-child(" + localStorage.selected + ")")
+          .toggleClass('selected')
+          .siblings()
+          .removeClass('selected');
+      }
+
+    }
+
+    function saveColor(darkerColor, lighterColor, color, selected, fgcolor) {
+      localStorage.mySavedColor = true;
+      localStorage.darkerColor = darkerColor;
+      localStorage.lighterColor = lighterColor;
+      localStorage.color = color;
+      localStorage.selected = selected;
+      localStorage.fgcolor = fgcolor;
+    }
+
+    $('.colors li').click(function () {
+
+      var color = $('.color', this).css('background-color');
+
+      var fgcolor = $('.color', this).css('color');
+
+      var darkerColor = alterColor(color, 'darken', 30);
+      var lighterColor = alterColor(color, 'lighten', 50);
+      var selected = '';
+
+      $(this)
+        .toggleClass('selected')
+        .siblings()
+        .removeClass('selected');
+
+      $('ul.colors li').each(function (i) {
+        if ($(this).hasClass('selected')) {
+          selected = i + 1;
+        }
+      })
+
+      $('.darker').css('color', darkerColor);
+      $('.lighter').css('color', lighterColor);
+      $('body').css('background', color);
+      $('body').css('color', fgcolor, " !important");
+
+      saveColor(darkerColor, lighterColor, color, selected, fgcolor)
+    });
+  </script>
+  
+</body>
+
+</html>
